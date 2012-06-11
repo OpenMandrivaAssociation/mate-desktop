@@ -8,7 +8,7 @@
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
@@ -71,11 +71,10 @@ NOCONFIGURE=yes ./autogen.sh
 %install
 %makeinstall_std 
 
+# MD these files conflict with gnome-desktop3
+rm -fr %{buildroot}%{_datadir}/omf
+
 %find_lang %{name}-%{api} --with-gnome --all-name
-#for d in `ls -1 %{buildroot}%{_datadir}/gnome/help/`; do
-#  %find_lang $d --with-gnome
-#  cat $d.lang >> %{name}-%{api}.lang
-#done
 
 %files -f %{name}-%{api}.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
