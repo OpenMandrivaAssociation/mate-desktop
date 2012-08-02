@@ -82,6 +82,7 @@ rm -fr %{buildroot}%{_datadir}/omf
 %{_datadir}/applications/mate-about.desktop
 # this is a new help dir for mate and should be removed once
 # properly found with find-lang.sh
+%{_datadir}/mate-about/mate-version.xml
 %{_datadir}/mate/help/*
 %{_mandir}/man1/mate-about.1*
 
