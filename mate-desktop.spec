@@ -78,7 +78,7 @@ rm -fr %{buildroot}%{_datadir}/omf
 %files -f %{name}-%{api}.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
 %{_bindir}/mate-about
-%{_datadir}/pixmaps/*
+#{_datadir}/pixmaps/*
 %{_datadir}/applications/mate-about.desktop
 # this is a new help dir for mate and should be removed once
 # properly found with find-lang.sh
