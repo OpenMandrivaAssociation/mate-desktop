@@ -12,7 +12,7 @@ Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.4/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
 
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gtk-doc
@@ -50,7 +50,7 @@ desktop.
 Summary:	Development libraries, include files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n %{devname}
 Development libraries, include files for internal library %{name}.
@@ -78,12 +78,8 @@ rm -fr %{buildroot}%{_datadir}/omf
 %files -f %{name}-%{api}.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
 %{_bindir}/mate-about
-#{_datadir}/pixmaps/*
 %{_datadir}/applications/mate-about.desktop
-# this is a new help dir for mate and should be removed once
-# properly found with find-lang.sh
 %{_datadir}/mate-about/mate-version.xml
-%{_datadir}/mate/help/*
 %{_mandir}/man1/mate-about.1*
 
 %files -n %{libname}
@@ -94,4 +90,19 @@ rm -fr %{buildroot}%{_datadir}/omf
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %doc %{_datadir}/gtk-doc/html/*
+
+
+
+%changelog
+* Thu Aug 02 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.4.1-1
++ Revision: 811593
+- new version 1.4.1
+
+* Mon Jun 11 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-2
++ Revision: 804430
+- rebuild removed conflicting files with gnome-desktop3
+
+* Fri Jun 01 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-1
++ Revision: 801816
+- imported package mate-desktop
 
