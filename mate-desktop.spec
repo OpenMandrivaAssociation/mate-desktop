@@ -1,3 +1,5 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
 %define	api_version	2
 %define api		2.0
 %define major		17
@@ -7,14 +9,13 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.4.1
+Version:	1.4.2
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
-BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	ldetect-lst
@@ -90,19 +91,4 @@ rm -fr %{buildroot}%{_datadir}/omf
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %doc %{_datadir}/gtk-doc/html/*
-
-
-
-%changelog
-* Thu Aug 02 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.4.1-1
-+ Revision: 811593
-- new version 1.4.1
-
-* Mon Jun 11 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-2
-+ Revision: 804430
-- rebuild removed conflicting files with gnome-desktop3
-
-* Fri Jun 01 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-1
-+ Revision: 801816
-- imported package mate-desktop
 
