@@ -9,23 +9,25 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.4.2
+Version:	1.8.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
-URL:		http://mate-desktop.org
+Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
+BuildRequires:	itstool
 BuildRequires:	ldetect-lst
 BuildRequires:	mate-common
-BuildRequires:	mate-conf
+#BuildRequires:	mate-conf
+BuildRequires:	yelp-tools
+BuildRequires:	pkgconfig(dconf)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
-BuildRequires:	pkgconfig(mateconf-2.0)
+#BuildRequires:	pkgconfig(mateconf-2.0)
 BuildRequires:	pkgconfig(mate-doc-utils)
 BuildRequires:	pkgconfig(unique-1.0)
 BuildRequires:	pkgconfig(x11)
@@ -58,37 +60,44 @@ Development libraries, include files for internal library %{name}.
 
 %prep
 %setup -q
+NOCONFIGURE=yes ./autogen.sh
 
 %build
-NOCONFIGURE=yes ./autogen.sh
 %configure2_5x \
 	--disable-static \
 	--disable-scrollkeeper \
 	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids
 
-%make LIBS='-lm'
+%make 
+#LIBS='-lm'
 
 %install
 %makeinstall_std 
 
 # MD these files conflict with gnome-desktop3
-rm -fr %{buildroot}%{_datadir}/omf
+#rm -fr %{buildroot}%{_datadir}/omf
+# remove needless gsettings convert file to avoid slow session start
+rm -fr  %{buildroot}%{_datadir}/MateConf
 
 %find_lang %{name}-%{api} --with-gnome --all-name
 
 %files -f %{name}-%{api}.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
 %{_bindir}/mate-about
+%{_bindir}/mate-gsettings-toggle
 %{_datadir}/applications/mate-about.desktop
+%{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 %{_datadir}/mate-about/mate-version.xml
+%{_datadir}/applications/mate-user-guide.desktop
 %{_mandir}/man1/mate-about.1*
+%{_mandir}/man1/mate-gsettings-toggle.1*
 
 %files -n %{libname}
 %{_libdir}/libmate-desktop-%{api_version}.so.%{major}*
 
 %files -n %{devname}
+%doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
-%doc %{_datadir}/gtk-doc/html/*
 
