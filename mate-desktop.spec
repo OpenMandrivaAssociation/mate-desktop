@@ -3,7 +3,6 @@
 %define	api_version	2
 %define api		2.0
 %define major		17
-
 %define libname	%mklibname %{name} %{api_version} %{major}
 %define devname	%mklibname -d %{name} %{api_version}
 
@@ -17,18 +16,14 @@ Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
-BuildRequires:	itstool
 BuildRequires:	ldetect-lst
 BuildRequires:	mate-common
-#BuildRequires:	mate-conf
 BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dconf)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
-#BuildRequires:	pkgconfig(mateconf-2.0)
-BuildRequires:	pkgconfig(mate-doc-utils)
 BuildRequires:	pkgconfig(unique-1.0)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
@@ -65,17 +60,13 @@ NOCONFIGURE=yes ./autogen.sh
 %build
 %configure2_5x \
 	--disable-static \
-	--disable-scrollkeeper \
 	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids
 
 %make 
-#LIBS='-lm'
 
 %install
 %makeinstall_std 
 
-# MD these files conflict with gnome-desktop3
-#rm -fr %{buildroot}%{_datadir}/omf
 # remove needless gsettings convert file to avoid slow session start
 rm -fr  %{buildroot}%{_datadir}/MateConf
 
