@@ -8,7 +8,7 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
@@ -58,8 +58,7 @@ Development libraries, include files for internal library %{name}.
 NOCONFIGURE=yes ./autogen.sh
 
 %build
-%configure2_5x \
-	--disable-static \
+%configure \
 	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids
 
 %make 
