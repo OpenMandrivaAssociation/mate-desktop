@@ -5,11 +5,12 @@
 %define major		17
 %define libname	%mklibname %{name} %{api_version} %{major}
 %define devname	%mklibname -d %{name} %{api_version}
+%define girname %mklibname %{name}-gir  %{api}
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.8.1
-Release:	2
+Version:	1.10.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -53,6 +54,15 @@ Provides:	%{name}-devel = %{EVRD}
 %description -n %{devname}
 Development libraries, include files for internal library %{name}.
 
+%package -n %{girname}
+Summary: GObject introspection interface library for %{name}
+Group: System/Libraries
+Requires: %{libname} = %{EVRD}
+
+%description -n %{girname}
+GObject introspection interface library for %{name}.
+
+
 %prep
 %setup -q
 NOCONFIGURE=yes ./autogen.sh
@@ -74,20 +84,23 @@ rm -fr  %{buildroot}%{_datadir}/MateConf
 %files -f %{name}-%{api}.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
 %{_bindir}/mate-about
-%{_bindir}/mate-gsettings-toggle
+%{_bindir}/mate-color-select
 %{_datadir}/applications/mate-about.desktop
+%{_datadir}/applications/mate-color-select.desktop
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 %{_datadir}/mate-about/mate-version.xml
-%{_datadir}/applications/mate-user-guide.desktop
 %{_mandir}/man1/mate-about.1*
-%{_mandir}/man1/mate-gsettings-toggle.1*
 
 %files -n %{libname}
 %{_libdir}/libmate-desktop-%{api_version}.so.%{major}*
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/MateDesktop-%{api}.typelib
 
 %files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
+%{_datadir}/gir-1.0/MateDesktop-%{api}.gir
 
