@@ -10,7 +10,7 @@
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
 Version:	1.14.0
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -24,7 +24,7 @@ BuildRequires:	pkgconfig(dconf)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(unique-1.0)
 BuildRequires:	pkgconfig(x11)
@@ -70,7 +70,8 @@ NOCONFIGURE=yes ./autogen.sh
 
 %build
 %configure \
-	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids
+	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
+	--with-gtk=3.0
 
 %make 
 
