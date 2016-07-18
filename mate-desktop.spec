@@ -9,7 +9,7 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.10.0
+Version:	1.14.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
@@ -90,7 +90,8 @@ rm -fr  %{buildroot}%{_datadir}/MateConf
 %{_datadir}/applications/mate-color-select.desktop
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 %{_datadir}/mate-about/mate-version.xml
-%{_mandir}/man1/mate-about.1*
+%{_iconsdir}/*/*/*/mate*
+%{_mandir}/man1/*.1*
 
 %files -n %{libname}
 %{_libdir}/libmate-desktop-%{api_version}.so.%{major}*
