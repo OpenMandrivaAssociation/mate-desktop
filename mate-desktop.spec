@@ -9,8 +9,8 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.14.0
-Release:	2
+Version:	1.18.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -63,24 +63,20 @@ Requires: %{libname} = %{EVRD}
 %description -n %{girname}
 GObject introspection interface library for %{name}.
 
-
 %prep
 %setup -q
-NOCONFIGURE=yes ./autogen.sh
 
 %build
+NOCONFIGURE=yes ./autogen.sh
 %configure \
 	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
-	--with-gtk=3.0
-
+	%{nil}
 %make 
 
 %install
 %makeinstall_std 
 
-# remove needless gsettings convert file to avoid slow session start
-rm -fr  %{buildroot}%{_datadir}/MateConf
-
+# locales
 %find_lang %{name}-%{api} --with-gnome --all-name
 
 %files -f %{name}-%{api}.lang
@@ -90,6 +86,7 @@ rm -fr  %{buildroot}%{_datadir}/MateConf
 %{_datadir}/applications/mate-about.desktop
 %{_datadir}/applications/mate-color-select.desktop
 %{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
+%dir %{_datadir}/mate-about
 %{_datadir}/mate-about/mate-version.xml
 %{_iconsdir}/*/*/*/mate*
 %{_mandir}/man1/*.1*
@@ -101,6 +98,7 @@ rm -fr  %{buildroot}%{_datadir}/MateConf
 %{_libdir}/girepository-1.0/MateDesktop-%{api}.typelib
 
 %files -n %{devname}
+%doc COPYING COPYING-DOCS
 %doc %{_datadir}/gtk-doc/html/*
 %{_includedir}/*
 %{_libdir}/*.so
