@@ -67,7 +67,7 @@ GObject introspection interface library for %{name}.
 %setup -q
 
 %build
-NOCONFIGURE=yes ./autogen.sh
+#NOCONFIGURE=yes ./autogen.sh
 %configure \
 	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
 	%{nil}
