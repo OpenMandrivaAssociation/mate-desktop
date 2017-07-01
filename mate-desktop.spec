@@ -19,17 +19,18 @@ BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	ldetect-lst
 BuildRequires:	mate-common
-BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(dconf)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(unique-1.0)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrandr)
+BuildRequires:	yelp-tools
 
 Requires:	ldetect-lst
 
