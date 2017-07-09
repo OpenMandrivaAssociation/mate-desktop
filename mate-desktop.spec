@@ -5,7 +5,7 @@
 %define major		17
 %define libname	%mklibname %{name} %{api_version} %{major}
 %define devname	%mklibname -d %{name} %{api_version}
-%define girname %mklibname %{name}-gir  %{api}
+%define girname %mklibname %{name}-gir %{api}
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
@@ -39,7 +39,7 @@ Requires:	mate-panel
 Requires:	xdg-user-dirs-gtk
 
 Suggests:	mate-user-guide
-Suggests:       yelp
+Suggests:	yelp
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
