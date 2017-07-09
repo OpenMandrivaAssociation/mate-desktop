@@ -33,6 +33,13 @@ BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	yelp-tools
 
 Requires:	ldetect-lst
+Requires:	mate-control-center
+Requires:	mate-notification-daemon
+Requires:	mate-panel
+Requires:	xdg-user-dirs-gtk
+
+Suggests:	mate-user-guide
+Suggests:       yelp
 
 %description
 This package contains some data files and other shared components of the
