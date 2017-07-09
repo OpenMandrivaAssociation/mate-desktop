@@ -15,6 +15,8 @@ License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+
+BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	ldetect-lst
@@ -128,4 +130,8 @@ based on %{name}.
 
 # locales
 %find_lang %{name} --with-gnome --all-name
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/mate-about.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/mate-color-select.desktop
 
