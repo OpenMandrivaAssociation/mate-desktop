@@ -77,8 +77,9 @@ GObject introspection interface library for %{name}.
 %build
 #NOCONFIGURE=yes ./autogen.sh
 %configure \
-	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
+	--disable-schemas-compile \
 	--enable-gtk-doc \
+	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
 	%{nil}
 %make 
 
