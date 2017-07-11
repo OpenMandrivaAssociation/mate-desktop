@@ -12,7 +12,7 @@ Name:		mate-desktop
 Version:	1.18.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
-Group:		Graphical desktop/GNOME
+Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
@@ -39,6 +39,7 @@ Requires:	mate-control-center
 Requires:	mate-notification-daemon
 Requires:	mate-panel
 Requires:	xdg-user-dirs-gtk
+Requires:       %{name}-schemas = %{version}-%{release}
 
 Suggests:	mate-user-guide
 Suggests:	yelp
@@ -60,7 +61,6 @@ MATE user environment.
 %{_bindir}/mate-color-select
 %{_datadir}/applications/mate-about.desktop
 %{_datadir}/applications/mate-color-select.desktop
-%{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 %dir %{_datadir}/mate-about
 %{_datadir}/mate-about/mate-version.xml
 %{_iconsdir}/*/*/*/mate*
@@ -110,6 +110,21 @@ based on %{name}.
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/gir-1.0/MateDesktop-%{api}.gir
+
+#---------------------------------------------------------------------------
+
+%package schemas
+Summary:	Gsettings schema files for %{name}
+Group:		Graphical desktop/Other
+BuildArch:	noarch
+
+%rename		%{oname}-schemas = %{version}-%{release}
+
+%description schemas
+This package provides the gsettings schemas for %{name}.
+
+%files schemas
+%{_datadir}/glib-2.0/schemas/org.mate.*.gschema.xml
 
 #---------------------------------------------------------------------------
 
