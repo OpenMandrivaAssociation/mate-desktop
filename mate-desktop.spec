@@ -118,8 +118,6 @@ Summary:	Gsettings schema files for %{name}
 Group:		Graphical desktop/Other
 BuildArch:	noarch
 
-%rename		%{oname}-schemas = %{version}-%{release}
-
 %description schemas
 This package provides the gsettings schemas for %{name}.
 
