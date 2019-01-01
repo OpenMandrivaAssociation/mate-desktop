@@ -1,4 +1,5 @@
 removed_sources:
   mate-desktop-1.14.0.tar.xz: 96bd13136a3b49c6abf43eafe9c28107916d6c21
-sources:
   mate-desktop-1.18.0.tar.xz: df31ccabe87aa83746e088b43441ca7aac0e67ac
+sources:
+  mate-desktop-1.18.1.tar.xz: 4b5d8a83b22a45f074a913e80dc97ff407cb179b
