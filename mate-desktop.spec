@@ -136,10 +136,10 @@ This package provides the gsettings schemas for %{name}.
 	--enable-gtk-doc \
 	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
 	%{nil}
-%make 
+%make_build
 
 %install
-%makeinstall_std 
+%make_install
 
 # locales
 %find_lang %{name} --with-gnome --all-name
@@ -147,4 +147,3 @@ This package provides the gsettings schemas for %{name}.
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/mate-about.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/mate-color-select.desktop
-
