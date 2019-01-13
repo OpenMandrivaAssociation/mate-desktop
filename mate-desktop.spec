@@ -15,6 +15,8 @@ License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+(upstream: https://git.mate-desktop.org/mate-desktop/patch/?id=ecf2fbdb7cbad7f8e7dfef8efcbce82308739c02)
+Patch0:		mate-1.20-add_mate_language_apis.patch
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
@@ -128,6 +130,7 @@ This package provides the gsettings schemas for %{name}.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 #NOCONFIGURE=yes ./autogen.sh
