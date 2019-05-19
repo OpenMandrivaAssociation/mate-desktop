@@ -20,6 +20,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	ldetect-lst
+BuildRequires:	librsvg
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(dconf)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
