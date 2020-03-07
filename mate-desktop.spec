@@ -9,13 +9,14 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.22.2
+Version:	1.24.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
