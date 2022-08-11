@@ -10,7 +10,7 @@
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
 Version:	1.26.0
-Release:	2
+Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
@@ -20,7 +20,7 @@ BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
-BuildRequires:	ldetect-lst
+BuildRequires:	hwdata
 BuildRequires:	librsvg
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(dconf)
@@ -37,12 +37,12 @@ BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xrandr)
 BuildRequires:	yelp-tools
 
-Requires:	ldetect-lst
+Requires:	hwdata
 Requires:	mate-control-center
 Requires:	mate-notification-daemon
 Requires:	mate-panel
 Requires:	xdg-user-dirs-gtk
-Requires:       %{name}-schemas = %{version}-%{release}
+Requires:	%{name}-schemas = %{version}-%{release}
 
 Suggests:	mate-user-guide
 Suggests:	yelp
@@ -67,7 +67,7 @@ MATE user environment.
 %dir %{_datadir}/mate-about
 %{_datadir}/mate-about/mate-version.xml
 %{_iconsdir}/*/*/*/mate*
-%{_mandir}/man1/*.1*
+%doc %{_mandir}/man1/*.1*
 
 #---------------------------------------------------------------------------
 
@@ -130,16 +130,15 @@ This package provides the gsettings schemas for %{name}.
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 #NOCONFIGURE=yes ./autogen.sh
 %configure \
 	--disable-schemas-compile \
 	--enable-gtk-doc \
-	--with-pnp-ids-path=%{_datadir}/misc/pnp.ids \
-	%{nil}
+	--with-pnp-ids-path="%{_datadir}/hwdata/pnp.ids"
+
 %make_build
 
 %install
