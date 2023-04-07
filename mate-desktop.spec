@@ -1,5 +1,3 @@
-%define url_ver %(echo %{version}|cut -d. -f1,2)
-
 %define	api_version	2
 %define api		2.0
 %define major		17
@@ -9,12 +7,12 @@
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.26.0
-Release:	3
+Version:	1.26.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
