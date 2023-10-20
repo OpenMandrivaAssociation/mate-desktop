@@ -64,6 +64,7 @@ MATE user environment.
 %{_datadir}/applications/mate-color-select.desktop
 %dir %{_datadir}/mate-about
 %{_datadir}/mate-about/mate-version.xml
+%config(noreplace) %{_datadir}/xdg-desktop-portal/mate-portals.conf
 %{_iconsdir}/*/*/*/mate*
 %doc %{_mandir}/man1/*.1*
 
