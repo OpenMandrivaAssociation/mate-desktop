@@ -1,18 +1,21 @@
-%define	api_version	2
-%define api		2.0
+%define api			2.0
 %define major		17
-%define libname	%mklibname %{name} %{api_version} %{major}
-%define devname	%mklibname -d %{name} %{api_version}
-%define girname %mklibname %{name}-gir %{api}
+%define api_version	%(echo %api     | cut -d\. -f1)
+%define mate_ver		%(echo %version | cut -d\. -f1-2)
+%global libname	%mklibname %{name}
+%global devname	%mklibname %{name} -d
+%global girname %mklibname %{name}-gir %{api}
+%global oldlibname	%mklibname %{name} 2
+%global olddevname	%mklibname %{name} 2 2 -d
 
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
-Version:	1.26.2
+Version:	1.28.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
-Url:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.26/%{name}-%{version}.tar.xz
+Url:		https://mate-desktop.org
+Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
@@ -73,6 +76,7 @@ MATE user environment.
 %package -n %{libname}
 Summary:	%{summary}
 Group:		System/Libraries
+Obsoletes:	%{oldlibname} < %{EVRD}
 
 %description -n %{libname}
 This package contains libraries used by %{name}.
@@ -100,6 +104,7 @@ Summary:	Development libraries, include files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{olddevname} < %{EVRD}
 
 %description -n %{devname}
 This package contains libraries and includes files for developing programs
