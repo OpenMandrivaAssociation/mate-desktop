@@ -1,7 +1,9 @@
+%define mate_ver	%(echo %{version}|cut -d. -f1,2)
+
 %define api			2.0
 %define major		17
 %define api_version	%(echo %api     | cut -d\. -f1)
-%define mate_ver		%(echo %version | cut -d\. -f1-2)
+
 %global libname	%mklibname %{name}
 %global devname	%mklibname %{name} -d
 %global girname %mklibname %{name}-gir %{api}
@@ -154,3 +156,4 @@ This package provides the gsettings schemas for %{name}.
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/mate-about.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/mate-color-select.desktop
+
