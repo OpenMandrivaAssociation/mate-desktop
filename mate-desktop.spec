@@ -13,7 +13,7 @@
 Summary:	Package containing code shared among mate-panel, mate-session-manager etc
 Name:		mate-desktop
 Version:	1.28.2
-Release:	2
+Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
